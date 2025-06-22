@@ -1,10 +1,18 @@
 import { createBrowserRouter } from "react-router";
+import Home from "../Pages/Home/Home";
+import MainLayout from "../Layout/MainLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>Welcome to Zap Shift</h1>,
-    errorElement: <h2>Page Not Found</h2>
+    element: <MainLayout />,
+    children:[
+      {
+        index: true,
+        element: <Home />
+      },
+   
+    ]
   }
  ])
 
