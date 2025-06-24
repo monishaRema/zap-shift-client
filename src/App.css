@@ -27,9 +27,19 @@ body {
 html {
   scroll-behavior: smooth;
 }
+button, a{
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
 .sub-heading{
     @apply text-3xl lg:text-4xl font-extrabold;
 }
 .text-desc {
     @apply  text-base lg:text-lg;
+}
+.theme-input{
+  @apply px-5 py-3 rounded-md border border-gray-300 outline-0 focus:border-accent focus:outline-0 focus:shadow-none w-full block;
+}
+.theme-label{
+  @apply text-base font-semibold text-gray-700 mb-1 block;
 }

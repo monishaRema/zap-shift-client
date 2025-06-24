@@ -31,7 +31,7 @@ export default function KeyBenefits() {
             {data.map((item, idx) => (
               <div
                 key={idx}
-                className="w-full flex flex-col md:flex-row items-center gap-10 bg-white rounded-xl overflow-hidden p-5 md:p-8"
+                className="w-full flex flex-col md:flex-row items-center gap-10 bg-white rounded-xl overflow-hidden p-8 md:p-10"
               >
                 <div className="min-w-[300px] flex items-center justify-center">
                   {item.imgUrl ? (
@@ -47,7 +47,7 @@ export default function KeyBenefits() {
                   )}
                 </div>
 
-                <div className="divider divider-horizontal divider-primary/30">
+                <div className="divider divider-vertical md:divider-horizontal ">
                 </div>
                 <div className="text-center md:text-left">
                   <h2 className="text-xl md:text-2xl font-bold text-primary mb-3">

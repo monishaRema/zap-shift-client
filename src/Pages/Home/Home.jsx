@@ -6,6 +6,7 @@ import BrandMarquee from './BrandMarquee/BrandMarquee';
 import KeyBenefits from './KeyBenefits/KeyBenefits';
 import BeMarchent from './BeMarchent/BeMarchent';
 import FAQ from './FAQ/FAQ';
+import Testimonial from './Testimonial/Testimonial';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <BrandMarquee></BrandMarquee>
             <KeyBenefits></KeyBenefits>
             <BeMarchent></BeMarchent>
+            <Testimonial></Testimonial>
             <FAQ></FAQ>
         </>
     );
