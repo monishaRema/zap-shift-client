@@ -239,7 +239,7 @@ const SendParcel = () => {
 
                 {/* Submit Button */}
                 <div className="text-center">
-                    <button className="btn btn-primary text-black">Submit</button>
+                    <button className="btn btn-secondary text-black">Submit</button>
                 </div>
             </form>
         </div>
