@@ -12,7 +12,7 @@ import DashboardLaout from "../Layout/DashboardLaout";
 import MyParcels from "../Pages/Dashboard/MyParcels/MyParcels";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
-import TrackPackage from "../Pages/Dashboard/MyParcels/TrackPackage";
+import TrackPackage from "../Pages/Dashboard/Tracking/TrackPackage";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 
 const router = createBrowserRouter([
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
         Component: PaymentHistory,
       },
       {
-        path: "track-package",
+        path: "track-package/:trackingId?",
         Component: TrackPackage,
       },
       {
