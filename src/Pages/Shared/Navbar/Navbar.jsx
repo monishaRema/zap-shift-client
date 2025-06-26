@@ -12,8 +12,15 @@ const Navbar = () => {
      <li><NavLink to='/coverage'>Coverage</NavLink></li>
      <li><NavLink to='/sendParcel'>Send a parcel</NavLink></li>
      <li><NavLink to='/aboutUs'>About Us</NavLink></li>
+
+     {
+      user && <>
+        <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+      </>
+     }
     
     </>
+
     return (
       <header className='py-8'>
   <div className='container mx-auto sm:px-5'>

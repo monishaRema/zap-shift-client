@@ -8,6 +8,9 @@ import ForgotPass from "../Pages/Auth/ForgotPass/ForgotPass";
 import Coverage from "../Pages/Coverage/Coverage";
 import PrivateRoutes from "./PrivateRoutes";
 import SendParcel from "../Pages/SendParcel/SendParcel";
+import DashboardLaout from "../Layout/DashboardLaout";
+import MyParcels from "../Pages/Dashboard/MyParcels/MyParcels";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +49,22 @@ const router = createBrowserRouter([
       {
         path: "forgot-password",
         element: <ForgotPass />
+      }
+    ]
+  },
+  {
+    path:'dashboard',
+    element:<PrivateRoutes>
+      <DashboardLaout></DashboardLaout>
+    </PrivateRoutes>,
+    children:[
+      {
+        path:'myParcels',
+        Component:MyParcels
+      },
+      {
+        path:'payment/:id',
+        Component:Payment
       }
     ]
   }
