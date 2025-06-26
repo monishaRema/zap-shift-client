@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router";
 import Logo from "../Pages/Shared/Logo";
+import { FaHome, FaBoxOpen, FaCreditCard, FaUser, FaSearchLocation } from "react-icons/fa";
+
 
 const DashboardLaout = () => {
   return (
@@ -50,10 +52,41 @@ const DashboardLaout = () => {
               {/* Sidebar content here */}
               <Logo></Logo>
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/" className="flex items-center gap-2">
+                  <FaHome /> Home
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/myParcels">My Parcels</NavLink>
+                <NavLink
+                  to="/dashboard/myParcels"
+                  className="flex items-center gap-2"
+                >
+                  <FaBoxOpen /> My Parcels
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/payment-history"
+                  className="flex items-center gap-2"
+                >
+                  <FaCreditCard /> Payment History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/track-package"
+                  className="flex items-center gap-2"
+                >
+                  <FaSearchLocation /> Track Package
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/profile"
+                  className="flex items-center gap-2"
+                >
+                  <FaUser /> User Profile
+                </NavLink>
               </li>
             </ul>
           </div>
