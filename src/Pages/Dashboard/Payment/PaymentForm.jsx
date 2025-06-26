@@ -10,7 +10,7 @@ const PaymentForm = () => {
     const elements = useElements();
     const [error,setError] = useState('');
     const {parcelId} =useParams();
-    console.log(parcelId)
+
 
     const  {isPending,data:parcelInfo= {}} = useQuery({
         queryKey:['parcels',parcelId],

@@ -72,7 +72,7 @@ const MyParcels = () => {
     };
 
     return (
-        <div className="container pt-10">
+        <div className="w-full pt-10">
             <h1 className='text-3xl text-center mb-10'>My Parcel</h1>
         <div className="overflow-x-auto shadow-md rounded-xl">
             <table className="table table-zebra w-full">
