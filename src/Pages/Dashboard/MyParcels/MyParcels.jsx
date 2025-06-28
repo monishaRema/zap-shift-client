@@ -17,10 +17,6 @@ const MyParcels = () => {
         }
     })
 
-    console.log(parcels)
-
-
-
      const handleView = (id) => {
         console.log("View parcel", id);
         // You could open a modal or navigate to a detail page

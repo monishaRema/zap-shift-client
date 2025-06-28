@@ -14,6 +14,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
 import TrackPackage from "../Pages/Dashboard/Tracking/TrackPackage";
 import Profile from "../Pages/Dashboard/Profile/Profile";
+import BeRider from "../Pages/Dashboard/Rider/BeRider";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,13 @@ const router = createBrowserRouter([
         path: "coverage",
         loader: () => fetch("data/warehouses.json"),
         Component: Coverage,
+      },
+      {
+        path:'beRider',
+        loader: () => fetch("data/warehouses.json"),
+        element:<PrivateRoutes>
+          <BeRider></BeRider>
+        </PrivateRoutes>
       },
       {
         path: "sendParcel",

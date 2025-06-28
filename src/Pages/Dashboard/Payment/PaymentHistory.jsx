@@ -18,7 +18,7 @@ const PaymentHistory = () => {
     if(isPanding){
         return '...loading'
     }
-    console.log(payments)
+
     return (
     <div className="overflow-x-auto my-10">
       <table className="min-w-full bg-white rounded-xl shadow">

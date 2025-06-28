@@ -14,7 +14,6 @@ const SocialLogin = () => {
     signInWithGoogle()
       .then(async (result) => {
         const user = result.user;
-
         const userData = {
           email: user.email,
           role: "user", //default role

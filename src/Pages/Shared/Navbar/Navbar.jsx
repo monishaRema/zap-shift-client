@@ -12,12 +12,15 @@ const Navbar = () => {
      <li><NavLink to='/coverage'>Coverage</NavLink></li>
      <li><NavLink to='/sendParcel'>Send a parcel</NavLink></li>
      <li><NavLink to='/aboutUs'>About Us</NavLink></li>
+     <li><NavLink to='/beRider'>Be a Rider</NavLink></li>
 
      {
       user && <>
         <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
       </>
      }
+
+
     
     </>
 
