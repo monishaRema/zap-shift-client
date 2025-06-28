@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import ImageUpload from "../../../assets/image-upload-icon.png";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
@@ -7,11 +7,16 @@ import SocialLogin from "../SocialLogin";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { ToastIcon } from "react-hot-toast";
+import useAxios from "../../../Hooks/useAxios";
 
 const Register = () => {
   const navigate = useNavigate();
+  const location = useLocation()
+  const from = location.state?.from || '/';
   const [profilePic, setProfilePic] = useState("");
   const [profilePicUrl, setProfilePicUrl] = useState(ImageUpload);
+  const axiosInstance = useAxios();
+
   const {
     register,
     handleSubmit,
@@ -21,15 +26,15 @@ const Register = () => {
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
-      .then((result) => {
-
+      .then(async (result) => {
         const userData = {
-          email:data.email,
-          role:'user', //default role
+          email: data.email,
+          role: "user", //default role
           created_at: new Date().toISOString(),
-          last_loggedIn: new Date().toISOString()
-        }
-
+          last_loggedIn: new Date().toISOString(),
+        };
+        const userRes = await axiosInstance.post("/users", userData);
+        console.log(userRes.data);
 
         // user profile data name and photo
         const userProfileData = {
@@ -46,7 +51,7 @@ const Register = () => {
               timer: 1500,
               icon: "success",
             });
-            navigate("/dashboard"); //navigate to dashboard
+            navigate(from); //navigate to dashboard
           })
           .catch((error) => {
             console.log(error);
