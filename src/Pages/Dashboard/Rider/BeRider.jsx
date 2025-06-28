@@ -56,9 +56,6 @@ const BeRider = () => {
   const onSubmit = async (data) => {
     data.email = user?.email || ''
     data.name = user.displayName || data.name
-    data.status = "pending";
-    data.created_at = new Date().toISOString();
-
     try {
 
       const res = await axiosSecure.post("/rider", data);
@@ -70,8 +67,8 @@ const BeRider = () => {
           timer: 2500,
           showConfirmButton: false,
         });
-        // reset();
-        navigate('/dahsboard')
+        reset();
+        navigate('/dashboard')
       } else {
         throw new Error("Save failed");
       }
@@ -248,7 +245,7 @@ const BeRider = () => {
                     Contact
                   </label>
                   <input
-                    type="text"
+                   type="tel" 
                     id="contact"
                     {...register("contact", { required: true })}
                     placeholder="Contact"
@@ -308,17 +305,7 @@ const BeRider = () => {
                   <span className="text-red-500">Required</span>
                 )}
               </div>
-              {/* Rider status - not editable */}
-              <div className="flex flex-col mb-1">
-                <label className="mb-1 font-medium text-gray-800">Status</label>
-                <input
-                  type="text"
-                  value="pending"
-                  disabled
-                  readOnly
-                  className="input input-bordered w-full bg-gray-100 text-gray-500"
-                />
-              </div>
+
               <button
                 type="submit"
                 className="w-full bg-lime-300 hover:bg-lime-400 text-black py-2 rounded mt-2 font-semibold text-base transition"

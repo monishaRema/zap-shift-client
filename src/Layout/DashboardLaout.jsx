@@ -1,8 +1,15 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router";
 import Logo from "../Pages/Shared/Logo";
-import { FaHome, FaBoxOpen, FaCreditCard, FaUser, FaSearchLocation } from "react-icons/fa";
-
+import {
+  FaHome,
+  FaBoxOpen,
+  FaCreditCard,
+  FaUser,
+  FaSearchLocation,
+  FaMotorcycle,
+  FaUserClock,
+} from "react-icons/fa";
 
 const DashboardLaout = () => {
   return (
@@ -78,6 +85,22 @@ const DashboardLaout = () => {
                   className="flex items-center gap-2"
                 >
                   <FaSearchLocation /> Track Package
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/active-riders"
+                  className="flex items-center gap-2"
+                >
+                  <FaMotorcycle /> Active Riders
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/pending-riders"
+                  className="flex items-center gap-2"
+                >
+                  <FaUserClock /> Pending Riders
                 </NavLink>
               </li>
               <li>

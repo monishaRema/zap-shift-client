@@ -15,6 +15,8 @@ import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
 import TrackPackage from "../Pages/Dashboard/Tracking/TrackPackage";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import BeRider from "../Pages/Dashboard/Rider/BeRider";
+import PendingRiders from "../Pages/Dashboard/Rider/PendingRiders";
+import ActiveRiders from "../Pages/Dashboard/Rider/ActiveRiders";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +94,14 @@ const router = createBrowserRouter([
         path: "profile",
         Component: Profile,
       },
+      {
+        path: "pending-riders",
+        Component: PendingRiders
+      },
+      {
+        path:"active-riders",
+        Component: ActiveRiders
+      }
     ],
   },
 ]);
