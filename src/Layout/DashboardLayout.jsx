@@ -14,8 +14,15 @@ import {
   FaUser,
   FaUserShield,
 } from "react-icons/fa";
+import useUserRole from "../Hooks/useUserRole";
 
-const DashboardLaout = () => {
+const DashboardLayout = () => {
+  const { role, roleLoading } = useUserRole();
+
+  if (roleLoading) {
+  return <div className="text-center py-20">Loading dashboard...</div>;
+}
+
   return (
     <section>
       <div className="container">
@@ -95,59 +102,42 @@ const DashboardLaout = () => {
                 </NavLink>
               </li>
 
-              <li>
-                <NavLink
-                  to="/dashboard/active-riders"
-                  className="flex items-center gap-2"
-                >
-                  <FaMotorcycle /> Active Riders
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/dashboard/pending-riders"
-                  className="flex items-center gap-2"
-                >
-                  <FaClipboardList /> Pending Riders
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/dashboard/all-riders"
-                  className="flex items-center gap-2"
-                >
-                  <FaUserCheck /> All Riders
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/dashboard/deactivated-riders"
-                  className="flex items-center gap-2"
-                >
-                  <FaUserTimes /> Deactivated Riders
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/dashboard/rejected-riders"
-                  className="flex items-center gap-2"
-                >
-                  <FaUserSlash /> Rejected Riders
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/dashboard/make-admin"
-                  className="flex items-center gap-2"
-                >
-                  <FaUserShield /> Make Admin
-                </NavLink>
-              </li>
+             {role?.toLowerCase() === "admin" && (
+                <>
+                  <li>
+                    <NavLink
+                      to="/dashboard/pending-riders"
+                      className="flex items-center gap-2"
+                    >
+                      <FaClipboardList /> Pending Riders
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/all-riders"
+                      className="flex items-center gap-2"
+                    >
+                      <FaUserCheck /> All Riders
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/deactivated-riders"
+                      className="flex items-center gap-2"
+                    >
+                      <FaUserTimes /> Deactivated Riders
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/make-admin"
+                      className="flex items-center gap-2"
+                    >
+                      <FaUserShield /> Make Admin
+                    </NavLink>
+                  </li>
+                </>
+              )}
               <li>
                 <NavLink
                   to="/dashboard/profile"
@@ -164,4 +154,4 @@ const DashboardLaout = () => {
   );
 };
 
-export default DashboardLaout;
+export default DashboardLayout;

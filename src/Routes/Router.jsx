@@ -8,7 +8,7 @@ import ForgotPass from "../Pages/Auth/ForgotPass/ForgotPass";
 import Coverage from "../Pages/Coverage/Coverage";
 import PrivateRoutes from "./PrivateRoutes";
 import SendParcel from "../Pages/SendParcel/SendParcel";
-import DashboardLaout from "../Layout/DashboardLaout";
+import DashboardLaout from "../Layout/DashboardLayout";
 import MyParcels from "../Pages/Dashboard/MyParcels/MyParcels";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
@@ -21,6 +21,8 @@ import AllRiders from "../Pages/Dashboard/Rider/AllRiders";
 import DeactivatedRiders from "../Pages/Dashboard/Rider/DeactivatedRiders";
 import RejectedRiders from "../Pages/Dashboard/Rider/RejectedRiders";
 import MakeAdmin from "../Pages/Dashboard/Make-admin/MakeAdmin";
+import Forbidden from "../Pages/Forbidden";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -51,9 +53,13 @@ const router = createBrowserRouter([
             <SendParcel></SendParcel>
           </PrivateRoutes>
         ),
-      },
+      },{
+        path:"forbidden",
+        Component: Forbidden
+      }
     ],
   },
+
   {
     path: "/",
     element: <AuthLayout />,
@@ -98,29 +104,55 @@ const router = createBrowserRouter([
         path: "profile",
         Component: Profile,
       },
+       // ✅ Admin-only routes
       {
         path: "pending-riders",
-        Component: PendingRiders
-      },
-       {
-        path: "all-riders",
-        Component: AllRiders
-      },
-       {
-        path: "deactivated-riders",
-        Component: DeactivatedRiders
-      },
-             {
-        path: "rejected-riders",
-        Component: RejectedRiders
+        element: (
+          <AdminRoute>
+            <PendingRiders />
+          </AdminRoute>
+        ),
       },
       {
-        path:"active-riders",
-        Component: ActiveRiders
-      },{
-        path: 'make-admin',
-        Component: MakeAdmin
-      }
+        path: "active-riders",
+        element: (
+          <AdminRoute>
+            <ActiveRiders />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "all-riders",
+        element: (
+          <AdminRoute>
+            <AllRiders />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "deactivated-riders",
+        element: (
+          <AdminRoute>
+            <DeactivatedRiders />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "rejected-riders",
+        element: (
+          <AdminRoute>
+            <RejectedRiders />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "make-admin",
+        element: (
+          <AdminRoute>
+            <MakeAdmin />
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);
