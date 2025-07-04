@@ -16,6 +16,7 @@ const Register = () => {
   const [profilePic, setProfilePic] = useState("");
   const [profilePicUrl, setProfilePicUrl] = useState(ImageUpload);
   const axiosInstance = useAxios();
+  const [error, setError] = useState('')
 
   const {
     register,
@@ -34,7 +35,7 @@ const Register = () => {
           last_loggedIn: new Date().toISOString(),
         };
         const userRes = await axiosInstance.post("/users", userData);
-        console.log(userRes.data);
+       
 
         // user profile data name and photo
         const userProfileData = {
@@ -54,11 +55,11 @@ const Register = () => {
             navigate(from); //navigate to dashboard
           })
           .catch((error) => {
-            console.log(error);
+            setError(error);
           });
       })
       .catch((error) => {
-        console.error("Error creating user:", error);
+       setError(error);
       });
   };
 
@@ -80,7 +81,7 @@ const Register = () => {
         setProfilePicUrl(result.data.data.url);
       })
       .catch((error) => {
-        console.log(error);
+       setError(error);
       });
   };
 
@@ -172,6 +173,9 @@ const Register = () => {
         <button className="btn btn-accent w-full text-black capitalize text-base">
           Register
         </button>
+        {
+          error !="" && <p className="text-red-300 mt-2">{error}</p>
+        }
       </form>
       <p className="text-gray-500 mt-2 mb-5">
         Already have an account?{" "}

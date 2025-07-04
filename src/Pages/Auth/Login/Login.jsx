@@ -65,7 +65,7 @@ const Login = () => {
       </form>
         <p className="text-gray-500 mt-2 mb-5">
           Don't have an account?{" "}
-            <Link to="/register" className="text-lime-600 hover:underline font-semibold">
+            <Link state={from} to="/register" className="text-lime-600 hover:underline font-semibold">
               Register
             </Link>
         </p>

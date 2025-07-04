@@ -17,6 +17,9 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
 import BeRider from "../Pages/Dashboard/Rider/BeRider";
 import PendingRiders from "../Pages/Dashboard/Rider/PendingRiders";
 import ActiveRiders from "../Pages/Dashboard/Rider/ActiveRiders";
+import AllRiders from "../Pages/Dashboard/Rider/AllRiders";
+import DeactivatedRiders from "../Pages/Dashboard/Rider/DeactivatedRiders";
+import RejectedRiders from "../Pages/Dashboard/Rider/RejectedRiders";
 
 const router = createBrowserRouter([
   {
@@ -97,6 +100,18 @@ const router = createBrowserRouter([
       {
         path: "pending-riders",
         Component: PendingRiders
+      },
+       {
+        path: "all-riders",
+        Component: AllRiders
+      },
+       {
+        path: "deactivated-riders",
+        Component: DeactivatedRiders
+      },
+             {
+        path: "rejected-riders",
+        Component: RejectedRiders
       },
       {
         path:"active-riders",

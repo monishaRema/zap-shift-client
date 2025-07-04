@@ -5,10 +5,13 @@ import {
   FaHome,
   FaBoxOpen,
   FaCreditCard,
-  FaUser,
   FaSearchLocation,
   FaMotorcycle,
-  FaUserClock,
+  FaClipboardList,
+  FaUserCheck,
+  FaUserTimes,
+  FaUserSlash,
+  FaUser,
 } from "react-icons/fa";
 
 const DashboardLaout = () => {
@@ -56,13 +59,14 @@ const DashboardLaout = () => {
               className="drawer-overlay"
             ></label>
             <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-              {/* Sidebar content here */}
-              <Logo></Logo>
+              <Logo />
+
               <li>
                 <NavLink to="/" className="flex items-center gap-2">
                   <FaHome /> Home
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
                   to="/dashboard/myParcels"
@@ -71,6 +75,7 @@ const DashboardLaout = () => {
                   <FaBoxOpen /> My Parcels
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
                   to="/dashboard/payment-history"
@@ -79,6 +84,7 @@ const DashboardLaout = () => {
                   <FaCreditCard /> Payment History
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
                   to="/dashboard/track-package"
@@ -87,6 +93,7 @@ const DashboardLaout = () => {
                   <FaSearchLocation /> Track Package
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
                   to="/dashboard/active-riders"
@@ -95,14 +102,43 @@ const DashboardLaout = () => {
                   <FaMotorcycle /> Active Riders
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
                   to="/dashboard/pending-riders"
                   className="flex items-center gap-2"
                 >
-                  <FaUserClock /> Pending Riders
+                  <FaClipboardList /> Pending Riders
                 </NavLink>
               </li>
+
+              <li>
+                <NavLink
+                  to="/dashboard/all-riders"
+                  className="flex items-center gap-2"
+                >
+                  <FaUserCheck /> All Riders
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/dashboard/deactivated-riders"
+                  className="flex items-center gap-2"
+                >
+                  <FaUserTimes /> Deactivated Riders
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/dashboard/rejected-riders"
+                  className="flex items-center gap-2"
+                >
+                  <FaUserSlash /> Rejected Riders
+                </NavLink>
+              </li>
+
               <li>
                 <NavLink
                   to="/dashboard/profile"
