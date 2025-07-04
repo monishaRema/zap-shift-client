@@ -12,6 +12,7 @@ import {
   FaUserTimes,
   FaUserSlash,
   FaUser,
+  FaUserShield,
 } from "react-icons/fa";
 
 const DashboardLaout = () => {
@@ -139,6 +140,14 @@ const DashboardLaout = () => {
                 </NavLink>
               </li>
 
+              <li>
+                <NavLink
+                  to="/dashboard/make-admin"
+                  className="flex items-center gap-2"
+                >
+                  <FaUserShield /> Make Admin
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to="/dashboard/profile"

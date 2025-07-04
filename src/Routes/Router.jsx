@@ -20,6 +20,7 @@ import ActiveRiders from "../Pages/Dashboard/Rider/ActiveRiders";
 import AllRiders from "../Pages/Dashboard/Rider/AllRiders";
 import DeactivatedRiders from "../Pages/Dashboard/Rider/DeactivatedRiders";
 import RejectedRiders from "../Pages/Dashboard/Rider/RejectedRiders";
+import MakeAdmin from "../Pages/Dashboard/Make-admin/MakeAdmin";
 
 const router = createBrowserRouter([
   {
@@ -116,6 +117,9 @@ const router = createBrowserRouter([
       {
         path:"active-riders",
         Component: ActiveRiders
+      },{
+        path: 'make-admin',
+        Component: MakeAdmin
       }
     ],
   },
