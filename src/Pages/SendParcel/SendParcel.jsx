@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
@@ -12,6 +12,7 @@ const generateTrackingID = () => {
 };
 
 const SendParcel = () => {
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
@@ -106,7 +107,7 @@ const SendParcel = () => {
                     .then(res => {
                         console.log(res.data);
                         if (res.data.insertedId) {
-                            // TODO: redirect to a payment page 
+                          
                             Swal.fire({
                                 title: "Redirecting...",
                                 text: "Proceeding to payment gateway.",
@@ -114,6 +115,7 @@ const SendParcel = () => {
                                 timer: 1500,
                                 showConfirmButton: false,
                             });
+                            navigate('/dashboard/myParcels')
                         }
                     })
                 

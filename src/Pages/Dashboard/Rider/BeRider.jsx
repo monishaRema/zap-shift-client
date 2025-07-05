@@ -58,7 +58,7 @@ const BeRider = () => {
     data.name = user.displayName || data.name
     try {
 
-      const res = await axiosSecure.post("/rider", data);
+      const res = await axiosSecure.post("/riders", data);
       if (res.data && (res.data.insertedId || res.data.success)) {
         Swal.fire({
           icon: "success",

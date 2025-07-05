@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router";
+import React, { use } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router";
 import Logo from "../Pages/Shared/Logo";
 import {
   FaHome,
@@ -10,25 +10,38 @@ import {
   FaClipboardList,
   FaUserCheck,
   FaUserTimes,
-  FaUserSlash,
   FaUser,
   FaUserShield,
+  FaBox,
+  FaTasks,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import useUserRole from "../Hooks/useUserRole";
+import useAuth from "../Hooks/useAuth";
+import { useQueryClient } from "@tanstack/react-query";
 
 const DashboardLayout = () => {
+  const queryClient = useQueryClient();
+  const {user,logOut} = useAuth()
+  const navigate = useNavigate()
   const { role, roleLoading } = useUserRole();
 
+  const handleLogout = async ()=>{
+    await logOut()
+      queryClient.clear(); // clears all react-query cache
+  navigate("/login");
+  }
+
   if (roleLoading) {
-  return <div className="text-center py-20">Loading dashboard...</div>;
-}
+    return <div className="text-center py-20">Loading dashboard...</div>;
+  }
 
   return (
     <section>
-      <div className="container">
+      <div className="">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content flex flex-col">
+          <div className="drawer-content flex flex-col ">
             {/* Navbar */}
             <div className="navbar bg-base-300 w-full lg:hidden">
               <div className="flex-none ">
@@ -75,35 +88,67 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
 
-              <li>
-                <NavLink
-                  to="/dashboard/myParcels"
-                  className="flex items-center gap-2"
-                >
-                  <FaBoxOpen /> My Parcels
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/dashboard/payment-history"
-                  className="flex items-center gap-2"
-                >
-                  <FaCreditCard /> Payment History
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/dashboard/track-package"
-                  className="flex items-center gap-2"
-                >
-                  <FaSearchLocation /> Track Package
-                </NavLink>
-              </li>
-
-             {role?.toLowerCase() === "admin" && (
+              {!roleLoading && role?.toLowerCase() === "user" && (
                 <>
+                  <li>
+                    <NavLink
+                      to="/dashboard/myParcels"
+                      className="flex items-center gap-2"
+                    >
+                      <FaBoxOpen /> My Parcels
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink
+                      to="/dashboard/payment-history"
+                      className="flex items-center gap-2"
+                    >
+                      <FaCreditCard /> Payment History
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/track-package"
+                      className="flex items-center gap-2"
+                    >
+                      <FaSearchLocation /> Track Package
+                    </NavLink>
+                  </li>
+                </>
+              )}
+              {!roleLoading && role?.toLowerCase() === "rider" && (
+                <>
+                  <li>
+                    <NavLink
+                      to="/dashboard/pending-tasks"
+                      className="flex items-center gap-2"
+                    >
+                      <FaTasks /> Pending Tasks
+                    </NavLink>
+                  </li>
+                </>
+              )}
+
+              {!roleLoading && role?.toLowerCase() === "admin" && (
+                <>
+                  <li>
+                    <NavLink
+                      to="/dashboard/all-parcels"
+                      className="flex items-center gap-2"
+                    >
+                      <FaBox /> All Parcels
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink
+                      to="/dashboard/assign-rider"
+                      className="flex items-center gap-2"
+                    >
+                      <FaMotorcycle /> Assign Rider
+                    </NavLink>
+                  </li>
                   <li>
                     <NavLink
                       to="/dashboard/pending-riders"
@@ -146,6 +191,16 @@ const DashboardLayout = () => {
                   <FaUser /> User Profile
                 </NavLink>
               </li>
+              <li>
+               <button className="flex items-center gap-2 "
+               onClick={()=>handleLogout()}
+               >
+               
+                 <FaSignOutAlt />
+                Log Out
+               </button>
+              </li>
+
             </ul>
           </div>
         </div>

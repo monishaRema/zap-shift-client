@@ -23,6 +23,10 @@ import RejectedRiders from "../Pages/Dashboard/Rider/RejectedRiders";
 import MakeAdmin from "../Pages/Dashboard/Make-admin/MakeAdmin";
 import Forbidden from "../Pages/Forbidden";
 import AdminRoute from "./AdminRoute";
+import AssignRider from "../Pages/Dashboard/Parcels/AssignRider";
+import AllParcels from "../Pages/Dashboard/Parcels/AllParcels";
+import RiderRoute from "./RiderRoute";
+import PendingTasks from "../Pages/Dashboard/Rider/PendingTasks";
 
 const router = createBrowserRouter([
   {
@@ -81,10 +85,6 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        index: true,
-        Component: MyParcels,
-      },
-      {
         path: "myParcels",
         Component: MyParcels,
       },
@@ -104,6 +104,14 @@ const router = createBrowserRouter([
         path: "profile",
         Component: Profile,
       },
+       // ✅ Rider-only routes
+      {
+        path:'pending-tasks',
+        element:<RiderRoute>
+          <PendingTasks></PendingTasks>
+        </RiderRoute>
+      },
+
        // ✅ Admin-only routes
       {
         path: "pending-riders",
@@ -150,6 +158,22 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <MakeAdmin />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "assign-rider",
+        element: (
+          <AdminRoute>
+            <AssignRider></AssignRider>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "all-parcels",
+        element: (
+          <AdminRoute>
+           <AllParcels></AllParcels>
           </AdminRoute>
         ),
       },

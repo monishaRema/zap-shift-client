@@ -149,7 +149,7 @@ const AllRiders = () => {
                 <th className="py-2 px-3">Email</th>
                 <th className="py-2 px-3">Region</th>
                 <th className="py-2 px-3">District</th>
-                <th className="py-2 px-3">Warehouse</th>
+                <th className="py-2 px-3">Works</th>
                 <th className="py-2 px-3">Contact</th>
                 <th className="py-2 px-3">Status</th>
                 <th className="py-2 px-3">Applied</th>
@@ -167,7 +167,7 @@ const AllRiders = () => {
                   <td className="py-2 px-3">{rider.email}</td>
                   <td className="py-2 px-3">{rider.region}</td>
                   <td className="py-2 px-3">{rider.district}</td>
-                  <td className="py-2 px-3">{rider.warehouse}</td>
+                  <td className="py-2 px-3">{rider.delivery_status}</td>
                   <td className="py-2 px-3">{rider.contact}</td>
                   <td className="py-2 px-3 capitalize">
                     <span

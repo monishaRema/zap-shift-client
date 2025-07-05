@@ -54,7 +54,7 @@ const PaymentForm = () => {
       console.log("payment method", paymentMethod);
     }
 
-    const res = await axiosSecure.post("/create-payment-intent", {
+    const res = await axiosSecure.post("/payments/create-payment-intent", {
       amountInCents,
       parcelId,
     });
